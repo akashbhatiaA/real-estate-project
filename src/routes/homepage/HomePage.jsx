@@ -1,8 +1,12 @@
 
+import { useContext } from 'react';
 import SearchBar from '../../components/searchBar/SearchBar';
 import  './HomePage.scss';
+import { AuthContext } from '../../context/AuthContext';
 
 function HomePage(){
+
+    const {currentUser} = useContext(AuthContext)
 
     return(
         <div className="homePage">
@@ -15,8 +19,8 @@ function HomePage(){
                 </h1>
 
                 <p>
-                Our real estate business specializes in delivering exceptional properties tailored to meet the diverse needs of our clientele. With a keen focus on meticulous planning, innovative design, and sustainable development practices, we strive to create spaces that exceed expectations. From residential developments that redefine modern living to commercial projects that foster vibrant business environments, our portfolio reflects our commitment to quality and excellence.
-                </p>
+                Yes   
+                   </p>
 
                 <SearchBar />
                 

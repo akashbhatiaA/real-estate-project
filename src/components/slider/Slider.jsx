@@ -45,7 +45,7 @@ function Slider ({images}) {
                 <div className="close" onClick={() => (setImageIndex(null))}>X</div>
             </div>)}
             <div className="bigImage">
-                <img src={images[0]} alt="" 
+                <img src={images [0]} alt="" 
                 onClick={() => (setImageIndex(0))}
                 />
             </div>
@@ -63,3 +63,4 @@ function Slider ({images}) {
     )
 }
 export default Slider;
+

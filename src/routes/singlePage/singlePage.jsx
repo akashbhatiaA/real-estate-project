@@ -2,32 +2,52 @@ import './singlePage.scss';
 import Slider from '../../components/slider/Slider';
 import { singlePostData, userData } from '../../lib/dummydata';
 import Map from '../../components/map/Map';
+import { useLoaderData } from 'react-router-dom';
 
 function SinglePage () {
+  const post = useLoaderData() || {}; // Ensure post is always an object
+
+  // Destructure with default values
+  const {
+    title = '',
+    address = '',
+    price = 0,
+    images = [],
+    description = '',
+    avatar = '',
+    username = '',
+    utilities = '',
+  } = post;
+
+  console.log(post);
+
+
+ 
+
     return (
         <div className="singlePage">
             <div className="details">
                 <div className="wrapper">
-                    <Slider images = {singlePostData.images}/>
+                <Slider images={post.images} />
                     <div className="info">
 
                     <div className="top">
                         <div className="post">
-                            <h1>{singlePostData.title}</h1>
+                            <h1>{post.title}</h1>
                             <div className="address">
-                                <img src="https://github.com/safak/react-estate-ui/blob/starter/public/pin.png?raw=true"
+                                <img src="/pin.png"
                                  alt="" />
-                                 <span>{singlePostData.address}</span>
+                                 <span>{post.address}</span>
                             </div>
-                            <div className="price">$ {singlePostData.price}</div>
+                            <div className="price">$ {post.price}</div>
                         </div>
                         <div className="user">
-                            <img src= {userData.img} alt="" />
-                            <span>{userData.name}</span>
+                            <img src= {post.avatar} alt="" />
+                            <span>{post.username}</span>
                         </div>
                     </div>
                     <div className="bottom">
-                        {singlePostData.description}
+                        {post.description}
                     </div>
                     </div>
                 </div>
@@ -37,15 +57,15 @@ function SinglePage () {
           <p className="title">General</p>
           <div className="listVertical">
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/utility.png?raw=true"
+              <img src="/utility.png" 
                alt="" />
               <div className="featureText">
                 <span>Utilities</span>
-                <p>Renter is responsible</p>
+                <p>{post.utilities}</p>
               </div>
             </div>
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/pet.png?raw=true"
+              <img src="/pet.png" 
                alt="" />
               <div className="featureText">
                 <span>Pet Policy</span>
@@ -53,7 +73,7 @@ function SinglePage () {
               </div>
             </div>
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/fee.png?raw=true"
+              <img src="/fee.png"
                alt="" />
               <div className="featureText">
                 <span>Property Fees</span>
@@ -64,17 +84,17 @@ function SinglePage () {
           <p className="title">Sizes</p>
           <div className="sizes">
             <div className="size">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/size.png?raw=true"
+              <img src="/size.png"
                alt="" />
               <span>80 sqft</span>
             </div>
             <div className="size">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/bed.png?raw=true"
+              <img src="/bed.png"
                alt="" />
               <span>2 beds</span>
             </div>
             <div className="size">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/bath.png?raw=true"
+              <img src="/bath.png"
                alt="" />
               <span>1 bathroom</span>
             </div>
@@ -82,7 +102,7 @@ function SinglePage () {
           <p className="title">Nearby Places</p>
           <div className="listHorizontal">
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/school.png?raw=true"
+              <img src="/school.png"
                alt="" />
               <div className="featureText">
                 <span>School</span>
@@ -90,14 +110,14 @@ function SinglePage () {
               </div>
             </div>
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/pet.png?raw=true" alt="" />
+              <img src="/pet.png" alt="" />
               <div className="featureText">
                 <span>Bus Stop</span>
                 <p>100m away</p>
               </div>
             </div>
             <div className="feature">
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/fee.png?raw=true" alt="" />
+              <img src="/fee.png" alt="" />
               <div className="featureText">
                 <span>Restaurant</span>
                 <p>200m away</p>
@@ -106,16 +126,16 @@ function SinglePage () {
           </div>
           <p className="title">Location</p>
           <div className="mapContainer">
-           <Map items={[singlePostData]} />
+           <Map items={[] } />
           </div>
           <div className="buttons">
             <button>
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/chat.png?raw=true"
+              <img src="/chat.png"
                alt="" />
               Send a Message
             </button>
             <button>
-              <img src="https://github.com/safak/react-estate-ui/blob/completed/public/save.png?raw=true"
+              <img src="/save.png"
                alt="" />
               Save the Place
             </button>
@@ -127,3 +147,5 @@ function SinglePage () {
 }
 
 export default SinglePage;
+
+
